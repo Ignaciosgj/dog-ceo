@@ -1,7 +1,7 @@
-export const getAllBreeds = async () => {
-  const url = "https://dog.ceo/api/breeds/list/all";
-  const response = await fetch(url);
-  const json = await response.json();
+import axios from "axios"
 
-  return json;
-};
+export const getAllBreeds = async () => {
+  const result = await axios('https://dog.ceo/api/breeds/list/all');
+  const  message  = result.data;
+  return message;
+}
