@@ -32,5 +32,17 @@ describe("test", () => {
     expect(result).toEqual(dogImage.data.message);
   });
 
-  it('Deberia fallar y retornar el mensaje "Api cauida" ', () => {});
+  it('Deberia fallar y retornar el mensaje "API caida" ', async () => {
+    //Arrange
+
+    //Act
+
+    axios.mockImplementation(() => Promise.reject());
+
+    //Assert
+    await expect(() => getByBreed('akita')).rejects.toThrow('API caida');
+
+  });
+
+  
 });
