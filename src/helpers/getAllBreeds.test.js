@@ -28,6 +28,24 @@ describe("test", () => {
     expect(result).toEqual(breedsMock);
   });
 
+  it("Deberia traer 3 breeds con subBreeds", async () => {
+    //Arrange
+    const breedsMock = {
+      briard: [],
+      buhund: ['norwegian'],
+      bulldog: ['boston', 'english', 'french']
+    }
+    axios.mockResolvedValue({
+      data: breedsMock
+    })
+
+    //Act
+    const result = await getAllBreeds();
+
+    //Assert
+    expect(result).toEqual(breedsMock);
+  })
+
   it("Deberia fallar", async () => {
     //Arrange
 
@@ -37,4 +55,5 @@ describe("test", () => {
     //Assert
     await expect(() => getAllBreeds()).rejects.toThrowError("API caida");
   });
+
 });
