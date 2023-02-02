@@ -6,6 +6,7 @@ export const getAllBreeds = async () => {
     const message = result.data;
     return message;
   } catch (error) {
-    throw new Error("Cuak");
+    console.log(error);
+    throw new Error('API caida');
   }
 };
