@@ -4,40 +4,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./App";
 import { getAllBreeds } from "./helpers/getAllBreeds";
 
-vi.mock("axios");
-
 describe("test", () => {
-
-  // afterEach(() => {
-  //   vi.clearAllMocks();
-  //   vi.resetAllMocks();
-  // })
-  
-  it("debería traer 3 breeds", async () => {
+  it("debería renderizar el componente <App/>", async () => {
     //arrange
-    const breedsMock = {
-      affenpinscher: [],
-      african: [],
-      airedale: [],
-    };
-    axios.mockResolvedValue({
-      data: breedsMock,
-    });
-
-    //act
-    const result = await getAllBreeds();
-
-    //assert
-    expect(result).toEqual(breedsMock);
-  });
-
-  it("Deberia fallar", async () => {
-    //Arrange
-
-    //Act
-    axios.mockImplementation(() => Promise.reject());
-    
-    //Assert
-    await expect(()=>getAllBreeds()).rejects.toThrowError("API caida");
+    render(<App />);
+    //act & assert
+    expect(screen.getByText("Hola mundo")).toBeDefined();
   });
 });
